@@ -1,5 +1,5 @@
 //
-//  CollectingDataAboutWalls.swift
+//  WallLocations.swift
 //  Maze
 //
 //  Created by Gabrielle Miller-Messner on 11/6/15.
@@ -26,7 +26,8 @@ extension ControlCenter {
         //        }
         
         // Step 1.1b
-        // TODO: Return a Bool that represents whether the robot is currently facing a wall
+        // TODO: Return a Bool that represents whether the robot is currently facing a wall. You will need to change the placeholder return statement below.
+        
         
         // Placeholder
         return false

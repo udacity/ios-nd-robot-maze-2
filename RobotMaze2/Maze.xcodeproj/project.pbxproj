@@ -34,8 +34,8 @@
 		A982CC251B7E357F00E61313 /* MazeOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A982CC241B7E357F00E61313 /* MazeOperators.swift */; };
 		A982CC2B1B7E3CEE00E61313 /* ControlCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A982CC2A1B7E3CEE00E61313 /* ControlCenter.swift */; };
 		A9C491E41B82363800987604 /* MazeMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C491E31B82363800987604 /* MazeMove.swift */; };
-		ED4D9FB21BED54D60063C39E /* CollectingDataAboutWalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D9FB11BED54D60063C39E /* CollectingDataAboutWalls.swift */; settings = {ASSET_TAGS = (); }; };
-		EDDDA0E91BEBE96C00FF159A /* RobotTurningInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDDA0E81BEBE96C00FF159A /* RobotTurningInstructions.swift */; settings = {ASSET_TAGS = (); }; };
+		ED4D9FB21BED54D60063C39E /* WallLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D9FB11BED54D60063C39E /* WallLocations.swift */; };
+		EDDDA0E91BEBE96C00FF159A /* RobotTurningInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDDA0E81BEBE96C00FF159A /* RobotTurningInstructions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,7 +68,7 @@
 		A982CC241B7E357F00E61313 /* MazeOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeOperators.swift; sourceTree = "<group>"; };
 		A982CC2A1B7E3CEE00E61313 /* ControlCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlCenter.swift; sourceTree = "<group>"; };
 		A9C491E31B82363800987604 /* MazeMove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeMove.swift; sourceTree = "<group>"; };
-		ED4D9FB11BED54D60063C39E /* CollectingDataAboutWalls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectingDataAboutWalls.swift; sourceTree = "<group>"; };
+		ED4D9FB11BED54D60063C39E /* WallLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallLocations.swift; sourceTree = "<group>"; };
 		EDDDA0E81BEBE96C00FF159A /* RobotTurningInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RobotTurningInstructions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,7 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				A982CC2A1B7E3CEE00E61313 /* ControlCenter.swift */,
-				ED4D9FB11BED54D60063C39E /* CollectingDataAboutWalls.swift */,
+				ED4D9FB11BED54D60063C39E /* WallLocations.swift */,
 				EDDDA0E81BEBE96C00FF159A /* RobotTurningInstructions.swift */,
 				A950F1E91B7E6511009A257F /* UnderTheHood */,
 			);
@@ -305,7 +305,7 @@
 				0EF2FBED1B3DC1040022624D /* MazeActor.swift in Sources */,
 				0EF2FBE91B3CA0370022624D /* SimpleRobot.swift in Sources */,
 				EDDDA0E91BEBE96C00FF159A /* RobotTurningInstructions.swift in Sources */,
-				ED4D9FB21BED54D60063C39E /* CollectingDataAboutWalls.swift in Sources */,
+				ED4D9FB21BED54D60063C39E /* WallLocations.swift in Sources */,
 				2A4CC8FD1B424A8200B0419A /* QueueManager.swift in Sources */,
 				A982CC2B1B7E3CEE00E61313 /* ControlCenter.swift in Sources */,
 				A9C491E41B82363800987604 /* MazeMove.swift in Sources */,
