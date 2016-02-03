@@ -11,7 +11,7 @@ class ControlCenter {
 
     var mazeController: MazeController!
 
-    func moveComplexRobot(robot: ComplexRobotObject) {
+    func moveComplexRobot(myRobot: ComplexRobotObject) {
         
         // Step 1.1c
         // TODO: Call the function, isFacingWall(), and define a constant to be equal to its return value. You can use the suggested constant name below--uncomment the code and add the function call.
