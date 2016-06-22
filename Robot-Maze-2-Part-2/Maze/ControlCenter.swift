@@ -11,7 +11,7 @@ class ControlCenter {
 
     var mazeController: MazeController!
 
-    func moveComplexRobot(myRobot: ComplexRobotObject) {
+    func moveComplexRobot(_ myRobot: ComplexRobotObject) {
       
     // You may want to paste your Part 1 implementation of moveComplexRobot() here
         
@@ -58,7 +58,7 @@ class ControlCenter {
         // TODO: If the robot encounters a dead end and there IS a wall ahead it should rotateRight().
     }
     
-    func previousMoveIsFinished(robot: ComplexRobotObject) {
+    func previousMoveIsFinished(_ robot: ComplexRobotObject) {
             self.moveComplexRobot(robot)
     }
 }

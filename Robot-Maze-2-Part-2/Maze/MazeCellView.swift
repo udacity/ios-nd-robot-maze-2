@@ -14,14 +14,14 @@ class MazeCellView : UIView {
     
     // MARK: Properties
     
-    var wallColor: UIColor = UIColor.orangeColor()
+    var wallColor: UIColor = UIColor.orange()
     var cellModel: MazeCellModel?
     var wallWidth: CGFloat = 1
 
     // MARK: UIView
     
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
         if let cellModel = cellModel {
      
@@ -30,46 +30,46 @@ class MazeCellView : UIView {
             
             let width = bounds.width
             let height = bounds.height
-            let path = CGPathCreateMutable()
+            let path = CGMutablePath()
             
             // Half wallWidth
             let hw = wallWidth / CGFloat(2)
             
             if cellModel.top {
-                CGPathMoveToPoint(path, nil, 0 - hw, 0)
-                CGPathAddLineToPoint(path, nil, width + hw, 0)
+                path.moveTo(nil, x: 0 - hw, y: 0)
+                path.addLineTo(nil, x: width + hw, y: 0)
             }
             
             if cellModel.right {
-                CGPathMoveToPoint(path, nil, width, 0)
-                CGPathAddLineToPoint(path, nil, width, height)
+                path.moveTo(nil, x: width, y: 0)
+                path.addLineTo(nil, x: width, y: height)
             }
             
             if cellModel.bottom {
-                CGPathMoveToPoint(path, nil, width + hw, height)
-                CGPathAddLineToPoint(path, nil, 0 - hw, height)
+                path.moveTo(nil, x: width + hw, y: height)
+                path.addLineTo(nil, x: 0 - hw, y: height)
             }
             
             if cellModel.left {
-                CGPathMoveToPoint(path, nil, 0, height)
-                CGPathAddLineToPoint(path, nil, 0, 0)
+                path.moveTo(nil, x: 0, y: height)
+                path.addLineTo(nil, x: 0, y: 0)
             }
             
-            let bezierPath = UIBezierPath(CGPath: path)
+            let bezierPath = UIBezierPath(cgPath: path)
             
             bezierPath.lineWidth = wallWidth;
             bezierPath.stroke()
             
             // Rounded corners
             let context = UIGraphicsGetCurrentContext()
-            CGContextSaveGState(context)
+            context?.saveGState()
             let nearCornerValue = -0.5 * wallWidth
             let farCornerValue = width + nearCornerValue
-            CGContextFillEllipseInRect(context, CGRect(x: nearCornerValue, y: nearCornerValue, width: wallWidth, height: wallWidth))
-            CGContextFillEllipseInRect(context, CGRect(x: farCornerValue, y: farCornerValue, width: wallWidth, height: wallWidth))
-            CGContextFillEllipseInRect(context, CGRect(x: farCornerValue, y: nearCornerValue, width: wallWidth, height: wallWidth))
-            CGContextFillEllipseInRect(context, CGRect(x: nearCornerValue, y: farCornerValue, width: wallWidth, height: wallWidth))
-            CGContextRestoreGState(context)
+            context?.fillEllipse(in: CGRect(x: nearCornerValue, y: nearCornerValue, width: wallWidth, height: wallWidth))
+            context?.fillEllipse(in: CGRect(x: farCornerValue, y: farCornerValue, width: wallWidth, height: wallWidth))
+            context?.fillEllipse(in: CGRect(x: farCornerValue, y: nearCornerValue, width: wallWidth, height: wallWidth))
+            context?.fillEllipse(in: CGRect(x: nearCornerValue, y: farCornerValue, width: wallWidth, height: wallWidth))
+            context?.restoreGState()
         }
     }
 }

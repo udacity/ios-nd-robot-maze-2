@@ -9,11 +9,11 @@
 // MARK: - MazeDirection
 
 enum MazeDirection: Int {
-    case Up = 0, Right, Down, Left
+    case up = 0, right, down, left
 }
 
 // MARK: - RotateDirection
 
 enum RotateDirection: Int {
-    case Left = 0, Right, None
+    case left = 0, right, none
 }

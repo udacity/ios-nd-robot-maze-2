@@ -29,11 +29,11 @@ class MazeController {
         self.mazeView.createMazeCells()
     }
     
-    func cellModelsFromPlist(filename: String) -> [[MazeCellModel]] {
+    func cellModelsFromPlist(_ filename: String) -> [[MazeCellModel]] {
         
         var models = [[MazeCellModel]]()
         
-        if let path = NSBundle.mainBundle().pathForResource(filename, ofType: "plist") {
+        if let path = Bundle.main().pathForResource(filename, ofType: "plist") {
             if let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
                 
                 for row in dict["cellData"] as! [AnyObject] {
@@ -68,7 +68,7 @@ class MazeController {
     
     // MARK: Adding Maze Objects
     
-    func addMazeObject(obj: MazeObject) {
+    func addMazeObject(_ obj: MazeObject) {
         
         var object = obj
         
@@ -88,23 +88,23 @@ class MazeController {
         
         let view = object.view
         mazeView.addSubview(view)
-        mazeView.sendSubviewToBack(view)
+        mazeView.sendSubview(toBack: view)
         object.view.frame = self.mazeView.cellForRow(object.location.y, column: object.location.x).frame
     }
     
     // MARK: Move MazeObjects
     
-    func performMazeMoveOperation(operation: MazeMoveOperation) {
+    func performMazeMoveOperation(_ operation: MazeMoveOperation) {
         let move = operation.move
         let object = operation.object
         
         // This method is called after the robot completes a move or rotates.
-        func moveObjectToLocationCompletion(operation: MazeMoveOperation, object: MazeObject, move: MazeMove) {
+        func moveObjectToLocationCompletion(_ operation: MazeMoveOperation, object: MazeObject, move: MazeMove) {
             operation.markAsFinished()
             self.didPerformMove(object, move: move)
         }
         
-        if move.rotateDirection == .None {
+        if move.rotateDirection == .none {
             let newLocation = MazeLocation(x: object.location.x + move.coords.dx, y: object.location.y + move.coords.dy)
             if objectCanMoveToLocation(object, move: move) {
                 moveObjectToLocation(object, newLocation: newLocation) {
@@ -122,7 +122,7 @@ class MazeController {
         }
     }
     
-    func moveObjectToLocation(obj: MazeObject, newLocation: MazeLocation, completionHandler: () -> Void) {
+    func moveObjectToLocation(_ obj: MazeObject, newLocation: MazeLocation, completionHandler: () -> Void) {
         
         var object = obj
         
@@ -135,14 +135,14 @@ class MazeController {
         moveAnimationX.toValue = self.mazeView.cellForRow(newLocation.y, column: newLocation.x).layer.position.x
         moveAnimationX.duration = moveDuration
         moveAnimationX.fillMode = kCAFillModeForwards
-        moveAnimationX.removedOnCompletion = true
+        moveAnimationX.isRemovedOnCompletion = true
         
         let moveAnimationY = CABasicAnimation(keyPath: "position.y")
         moveAnimationY.fromValue = object.view.layer.position.y
         moveAnimationY.toValue = self.mazeView.cellForRow(newLocation.y, column: newLocation.x).layer.position.y
         moveAnimationY.duration = moveDuration
         moveAnimationX.fillMode = kCAFillModeForwards
-        moveAnimationY.removedOnCompletion = true
+        moveAnimationY.isRemovedOnCompletion = true
         
         CATransaction.setCompletionBlock({
             object.view.frame = newFrame
@@ -151,22 +151,22 @@ class MazeController {
             completionHandler()
         })
         
-        object.view.layer.addAnimation(moveAnimationX, forKey: "x_position")
-        object.view.layer.addAnimation(moveAnimationY, forKey: "y_position")
+        object.view.layer.add(moveAnimationX, forKey: "x_position")
+        object.view.layer.add(moveAnimationY, forKey: "y_position")
         
         CATransaction.commit()
     }
     
-    func rotateObject(object: MazeObject, direction: RotateDirection, completionHandler: () -> Void) {
+    func rotateObject(_ object: MazeObject, direction: RotateDirection, completionHandler: () -> Void) {
         
-        UIView.animateWithDuration(moveDuration, animations: { () -> Void in
-            object.view.transform = CGAffineTransformRotate(object.view.transform, (direction == RotateDirection.Right) ? CGFloat(M_PI_2) : CGFloat(-M_PI_2))
+        UIView.animate(withDuration: moveDuration, animations: { () -> Void in
+            object.view.transform = object.view.transform.rotate((direction == RotateDirection.right) ? CGFloat(M_PI_2) : CGFloat(-M_PI_2))
             }) { _ in
                 completionHandler()
         }
     }
     
-    private func animateObjectNotMovingToLocation(object: MazeObject, direction: MazeDirection, newLocation: MazeLocation, completionHandler: () -> Void) {
+    private func animateObjectNotMovingToLocation(_ object: MazeObject, direction: MazeDirection, newLocation: MazeLocation, completionHandler: () -> Void) {
         
         if object is ComplexRobotObject {
             let robot = object as! ComplexRobotObject
@@ -179,20 +179,20 @@ class MazeController {
             var dy: CGFloat = 0
             
             switch(direction) {
-            case MazeDirection.Up:
+            case MazeDirection.up:
                 dy = robot.view.frame.width * shakeProportion * -1.0
-            case MazeDirection.Down:
+            case MazeDirection.down:
                 dy = robot.view.frame.width * shakeProportion
-            case MazeDirection.Left:
+            case MazeDirection.left:
                 dx = robot.view.frame.width * shakeProportion * -1.0
-            case MazeDirection.Right:
+            case MazeDirection.right:
                 dx = robot.view.frame.width * shakeProportion
             }
             
             targetFrame.origin.x += dx
             targetFrame.origin.y += dy
             
-            UIView.animateWithDuration(moveDuration / 3, delay: 0, options: UIViewAnimationOptions.Autoreverse, animations: {
+            UIView.animate(withDuration: moveDuration / 3, delay: 0, options: UIViewAnimationOptions.autoreverse, animations: {
                 robot.view.frame = targetFrame
             }, completion: { _ in
                 robot.view.frame = originalFrame
@@ -204,7 +204,7 @@ class MazeController {
     // MARK: Collision Checking
     
     // Here's where we notify the control center that the move is complete.
-    func didPerformMove(object: MazeObject, move: MazeMove) {
+    func didPerformMove(_ object: MazeObject, move: MazeMove) {
         for mazeObject in mazeObjects {
             if let mazeObject = mazeObject as? MazeCollidable {
                 if mazeObject.view != object.view && object.location == mazeObject.location {
@@ -220,24 +220,24 @@ class MazeController {
     }
     
     func printTimestamp() {
-        let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .MediumStyle)
+        let timestamp = DateFormatter.localizedString(from: Date(), dateStyle: .mediumStyle, timeStyle: .mediumStyle)
         print(timestamp)
     }
     
     // MARK: Convenience
      
-    private func objectCanMoveToLocation(object: MazeObject, move: MazeMove) -> Bool {
+    private func objectCanMoveToLocation(_ object: MazeObject, move: MazeMove) -> Bool {
         
         let cell = cellModels[object.location.y][object.location.x]
         
         switch(move.direction) {
-        case .Up:
+        case .up:
             return !cell.top
-        case .Down:
+        case .down:
             return !cell.bottom
-        case .Left:
+        case .left:
             return !cell.left
-        case .Right:
+        case .right:
             return !cell.right
         }
     }
@@ -265,7 +265,7 @@ extension MazeController: MazeViewDelegate {
 
 extension MazeController {
 
-    func currentCell(robot: ComplexRobotObject) -> MazeCellModel {
+    func currentCell(_ robot: ComplexRobotObject) -> MazeCellModel {
         let cell = self.cellModels[robot.location.y][robot.location.x]
         return cell
     }

@@ -20,5 +20,5 @@ protocol MazeObject {
 // MARK: - MazeCollidable
 
 protocol MazeCollidable: MazeObject {
-    func performActionOnCollision(object: MazeObject)
+    func performActionOnCollision(_ object: MazeObject)
 }

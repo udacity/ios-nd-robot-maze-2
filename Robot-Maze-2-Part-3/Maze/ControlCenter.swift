@@ -11,7 +11,7 @@ class ControlCenter {
 
     var mazeController: MazeController!
 
-    func moveComplexRobot(myRobot: ComplexRobotObject) {
+    func moveComplexRobot(_ myRobot: ComplexRobotObject) {
       
     // You may want to paste your Part 2 implementation of moveComplexRobot() here
 
@@ -25,7 +25,7 @@ class ControlCenter {
         
     }
     
-    func previousMoveIsFinished(robot: ComplexRobotObject) {
+    func previousMoveIsFinished(_ robot: ComplexRobotObject) {
             self.moveComplexRobot(robot)
     }
     

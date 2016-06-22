@@ -13,7 +13,7 @@ protocol ComplexRobot {
     func rotateRight()
     func rotateLeft()
     func move()
-    func move(moves: Int)
+    func move(_ moves: Int)
 }
 
 // MARK: - ComplexRobotObject
@@ -23,18 +23,18 @@ class ComplexRobotObject: MazeActor, ComplexRobot {
     // MARK: Moves
         
     func rotateRight() {
-        rotate(.Right)
+        rotate(.right)
     }
     
     func rotateLeft() {
-        rotate(.Left)
+        rotate(.left)
     }
     
     func move() {
         move(direction, moves: 1)
     }
     
-    func move(moves: Int) {
+    func move(_ moves: Int) {
         move(direction, moves: moves)
     }
 }

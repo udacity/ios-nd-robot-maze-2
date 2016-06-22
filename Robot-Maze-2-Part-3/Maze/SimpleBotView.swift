@@ -14,28 +14,28 @@ class SimpleRobotView: UIView {
     
     // MARK: Properties
     
-    var color: UIColor = UIColor.whiteColor()
+    var color: UIColor = UIColor.white()
     var lineWidth: CGFloat = 5
     var border: CGFloat = 15
     
     // MARK: UIView
     
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
  
-        let robotRect = CGRectInset(self.bounds, border, border)
+        let robotRect = self.bounds.insetBy(dx: border, dy: border)
         let context = UIGraphicsGetCurrentContext()
-        CGContextSaveGState(context)
-        CGContextClearRect(context, rect)
-        CGContextSetLineWidth(context, lineWidth)
-        CGContextSetStrokeColorWithColor(context, color.CGColor)
-        CGContextStrokeEllipseInRect(context, robotRect)
+        context?.saveGState()
+        context?.clear(rect)
+        context?.setLineWidth(lineWidth)
+        context?.setStrokeColor(color.cgColor)
+        context?.strokeEllipse(in: robotRect)
         
-        CGContextSetLineWidth(context, 3)
-        CGContextStrokeEllipseInRect(context, CGRectMake(22, 19, 2, 2))
-        CGContextStrokeEllipseInRect(context, CGRectMake(27, 19, 2, 2))
+        context?.setLineWidth(3)
+        context?.strokeEllipse(in: CGRect(x: 22, y: 19, width: 2, height: 2))
+        context?.strokeEllipse(in: CGRect(x: 27, y: 19, width: 2, height: 2))
         
-        CGContextRestoreGState(context)
+        context?.restoreGState()
     }
     
 }

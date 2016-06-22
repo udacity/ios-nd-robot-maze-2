@@ -23,18 +23,18 @@ class SimpleRobotObject: MazeActor, SimpleRobot {
     // MARK: Moves
     
     func moveUp() {
-        move(MazeDirection.Up, moves: 1)
+        move(MazeDirection.up, moves: 1)
     }
     
     func moveDown() {
-        move(MazeDirection.Down, moves: 1)
+        move(MazeDirection.down, moves: 1)
     }
     
     func moveLeft() {
-        move(MazeDirection.Left, moves: 1)
+        move(MazeDirection.left, moves: 1)
     }
     
     func moveRight() {
-        move(MazeDirection.Right, moves: 1)
+        move(MazeDirection.right, moves: 1)
     }
 }

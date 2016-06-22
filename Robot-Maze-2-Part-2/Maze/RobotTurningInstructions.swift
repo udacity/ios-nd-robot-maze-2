@@ -10,13 +10,13 @@ import Foundation
 
 extension ControlCenter {
     
-    func randomlyRotateRightOrLeft(robot: ComplexRobotObject) {
+    func randomlyRotateRightOrLeft(_ robot: ComplexRobotObject) {
         let randomNumber = arc4random() % 2
         
         // You may want to paste your Part 1 implementation of randomlyRotateRightOrLeft(robot: ComplexRobotObject) here
     }
     
-    func continueStraightOrRotate(robot: ComplexRobotObject) {
+    func continueStraightOrRotate(_ robot: ComplexRobotObject) {
         let randomNumber = arc4random() % 2
         
         // You may want to paste your Part 1 implementation of continueStraightOrRotate(robot: ComplexRobotObject) here

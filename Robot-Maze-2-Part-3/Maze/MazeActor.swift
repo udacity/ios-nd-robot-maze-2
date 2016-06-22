@@ -29,10 +29,10 @@ class MazeActor: MazeObject {
         self.direction = direction
         
         self.view = SimpleRobotView()
-        self.view.opaque = false
+        self.view.isOpaque = false
         
-        if self.direction != MazeDirection.Up {
-            self.view.transform = CGAffineTransformRotate(self.view.transform, CGFloat(M_PI_2) * CGFloat(self.direction.rawValue))
+        if self.direction != MazeDirection.up {
+            self.view.transform = self.view.transform.rotate(CGFloat(M_PI_2) * CGFloat(self.direction.rawValue))
         }
     }
     
@@ -40,8 +40,8 @@ class MazeActor: MazeObject {
         self.location = location
         self.direction = direction
         
-        self.view = UIView(frame: CGRectMake(0, 0, objectSize.width, objectSize.height))
-        self.view.opaque = false
+        self.view = UIView(frame: CGRect(x: 0, y: 0, width: objectSize.width, height: objectSize.height))
+        self.view.isOpaque = false
         
         if let image = UIImage(named: imagePath) {
             let imageView = UIImageView(image: image)
@@ -49,46 +49,46 @@ class MazeActor: MazeObject {
             self.view.addSubview(imageView)
         }
         
-        if self.direction != MazeDirection.Up {
-            self.view.transform = CGAffineTransformRotate(self.view.transform, CGFloat(M_PI_2) * CGFloat(self.direction.rawValue))
+        if self.direction != MazeDirection.up {
+            self.view.transform = self.view.transform.rotate(CGFloat(M_PI_2) * CGFloat(self.direction.rawValue))
         }
     }
     
     // MARK: Enqueue MazeMovesOperation (NSOperation)
     
-    func rotate(rotateDirection: RotateDirection, completionHandler: (() -> Void)? = nil) {
-        if rotateDirection == RotateDirection.Left {
+    func rotate(_ rotateDirection: RotateDirection, completionHandler: (() -> Void)? = nil) {
+        if rotateDirection == RotateDirection.left {
             if direction.rawValue > 0 { direction = MazeDirection(rawValue: direction.rawValue - 1)! }
-            else { direction = MazeDirection.Left }
-        } else if rotateDirection == RotateDirection.Right {
+            else { direction = MazeDirection.left }
+        } else if rotateDirection == RotateDirection.right {
             if direction.rawValue < 3 { direction = MazeDirection(rawValue: direction.rawValue + 1)! }
-            else { direction = MazeDirection.Up }
+            else { direction = MazeDirection.up }
         }
         
         let move = MazeMove(coords: Move(dx: 0, dy: 0), rotateDirection: rotateDirection)
         enqueueMove(move, completionHandler: completionHandler)
     }
     
-    func move(moveDirection: MazeDirection, moves: Int, completionHandler: (() -> Void)? = nil) {
+    func move(_ moveDirection: MazeDirection, moves: Int, completionHandler: (() -> Void)? = nil) {
         if moveDirection != self.direction {
             var movesToRotate = moveDirection.rawValue - self.direction.rawValue
             if movesToRotate == 3 { movesToRotate = -1 }
             else if movesToRotate == -3 { movesToRotate = 1 }
             for _ in 0..<abs(movesToRotate) {
-                rotate((movesToRotate > 0) ? RotateDirection.Right : RotateDirection.Left, completionHandler: completionHandler)
+                rotate((movesToRotate > 0) ? RotateDirection.right : RotateDirection.left, completionHandler: completionHandler)
             }
         }
         
-        let dx = (moveDirection == MazeDirection.Right) ? 1 : ((moveDirection == MazeDirection.Left) ? -1 : 0)
-        let dy = (moveDirection == MazeDirection.Up) ? -1 : ((moveDirection == MazeDirection.Down) ? 1 : 0)
+        let dx = (moveDirection == MazeDirection.right) ? 1 : ((moveDirection == MazeDirection.left) ? -1 : 0)
+        let dy = (moveDirection == MazeDirection.up) ? -1 : ((moveDirection == MazeDirection.down) ? 1 : 0)
         
         for _ in 0 ..< moves {
-            let move = MazeMove(coords: Move(dx: dx, dy: dy), rotateDirection: .None)
+            let move = MazeMove(coords: Move(dx: dx, dy: dy), rotateDirection: .none)
             enqueueMove(move, completionHandler: completionHandler)
         }
     }
     
-    func enqueueMove(move: MazeMove, completionHandler: (() -> Void)? = nil) {
+    func enqueueMove(_ move: MazeMove, completionHandler: (() -> Void)? = nil) {
         guard let mazeController = mazeController else { return }
         
         let operation = MazeMoveOperation(object: self, move: move, mazeController: mazeController)

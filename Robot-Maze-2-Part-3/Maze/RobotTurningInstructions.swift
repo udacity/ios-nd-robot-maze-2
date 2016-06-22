@@ -10,13 +10,13 @@ import Foundation
 
 extension ControlCenter {
     
-    func randomlyRotateRightOrLeft(robot: ComplexRobotObject) {
+    func randomlyRotateRightOrLeft(_ robot: ComplexRobotObject) {
         let randomNumber = arc4random() % 2
         
         // You may want to paste your Part 1 implementation of randomlyRotateRightOrLeft(robot: ComplexRobotObject) here.
     }
     
-    func continueStraightOrRotate(robot: ComplexRobotObject, wallInfo:(up: Bool, right: Bool, down: Bool, left: Bool, numberOfWalls: Int)) {
+    func continueStraightOrRotate(_ robot: ComplexRobotObject, wallInfo:(up: Bool, right: Bool, down: Bool, left: Bool, numberOfWalls: Int)) {
         let randomNumber = arc4random() % 2
         
         // You may want to paste your Part 1 implementation of continueStraightOrRotate(robot: ComplexRobotObject) here.
@@ -25,7 +25,7 @@ extension ControlCenter {
         // TODO: Instead of calling randomlyRotateRightOrLeft() call turnTowardClearPath() when the robot has randomly chosen to rotate.
     }
 
-    func turnTowardClearPath(robot: ComplexRobotObject, wallInfo: (up: Bool, right: Bool, down: Bool, left: Bool, numberOfWalls: Int)) {
+    func turnTowardClearPath(_ robot: ComplexRobotObject, wallInfo: (up: Bool, right: Bool, down: Bool, left: Bool, numberOfWalls: Int)) {
         
         // Step 3.1
         // TODO: Tell the robot which way to turn toward the clear path. There are four cases where the robot should rotate to the right (the first two have been done for you--uncomment the code below). Write the remaining two cases where the robot should rotate to the right. For all other cases, the robot should rotate to the left.

@@ -26,8 +26,8 @@ class Star: MazeCollidable {
     
     init(location: MazeLocation = MazeLocation(x: 3, y: 2), imagePath: String = "star.png") {
         self.location = location
-        self.direction = MazeDirection.Up
-        self.view = UIView(frame: CGRectMake(0, 0, objectSize.width, objectSize.height))
+        self.direction = MazeDirection.up
+        self.view = UIView(frame: CGRect(x: 0, y: 0, width: objectSize.width, height: objectSize.height))
         
         if let image = UIImage(named: imagePath) {
             let imageView = UIImageView(image: image)
@@ -40,12 +40,12 @@ class Star: MazeCollidable {
         rotate.toValue = ((360.0 * M_PI) / 180.0)
         rotate.duration = 2.0
         rotate.repeatCount = 1e100
-        self.view.layer.addAnimation(rotate, forKey: "360")
+        self.view.layer.add(rotate, forKey: "360")
     }
     
     // MARK: MazeCollidable
     
-    func performActionOnCollision(object: MazeObject) {
+    func performActionOnCollision(_ object: MazeObject) {
         if let actionHandler = actionHandler {
             actionHandler(object)
         }

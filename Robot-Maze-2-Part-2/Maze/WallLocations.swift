@@ -10,7 +10,7 @@ import Foundation
 
 extension ControlCenter {
     
-    func isFacingWall(robot: ComplexRobotObject, direction: MazeDirection) -> Bool {
+    func isFacingWall(_ robot: ComplexRobotObject, direction: MazeDirection) -> Bool {
         
         let cell = mazeController.currentCell(robot)
         var isWall: Bool = false
@@ -20,7 +20,7 @@ extension ControlCenter {
         return false
     }
     
-    func checkWalls(robot:ComplexRobotObject) -> (up: Bool, right: Bool, down: Bool, left: Bool, numberOfWalls: Int) {
+    func checkWalls(_ robot:ComplexRobotObject) -> (up: Bool, right: Bool, down: Bool, left: Bool, numberOfWalls: Int) {
         var numberOfWalls = 0
         let cell = mazeController.currentCell(robot)
         

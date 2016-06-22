@@ -28,7 +28,7 @@ class MazeView: UIView {
     var cellLayer: UIView!
     var cells = [[MazeCellView]]()
     
-    var wallColor = UIColor.orangeColor()
+    var wallColor = UIColor.orange()
     var wallWidth = CGFloat(8)
     
     // MARK: Initializers
@@ -51,10 +51,10 @@ class MazeView: UIView {
     
     private func setUpCellLayerAndBackground() {
         cellLayer = UIView(frame: self.frame)
-        cellLayer.backgroundColor = UIColor.clearColor()
-        cellLayer.opaque = false
+        cellLayer.backgroundColor = UIColor.clear()
+        cellLayer.isOpaque = false
         addSubview(cellLayer)
-        self.backgroundColor = UIColor.blackColor()
+        self.backgroundColor = UIColor.black()
     }
     
     // MARK: Create MazeCellViews
@@ -71,12 +71,12 @@ class MazeView: UIView {
                 let cell = MazeCellView()
                 
                 if let delegate = delegate {
-                    delegate.mazeView(self, configureCell: cell, forRow: r, column: c)
+                    let _ = delegate.mazeView(self, configureCell: cell, forRow: r, column: c)
                 } else {
                     cell.cellModel = MazeCellModel(top: true, right: true, bottom: true, left: true)
                 }
                 
-                cell.backgroundColor = UIColor.clearColor()
+                cell.backgroundColor = UIColor.clear()
                 
                 row.append(cell)
                 
@@ -130,7 +130,7 @@ class MazeView: UIView {
         mazeController.repositionObjects()
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let rowCount = delegate?.numberOfRowsForMazeView(self) ?? 0
         let columnCount = delegate?.numberOfColumnsForMazeView(self) ?? 0
         
@@ -144,18 +144,18 @@ class MazeView: UIView {
         let height = CGFloat(rowCount) * firstCell.size.height
         
         let rect = CGRect(x: firstCell.origin.x, y: firstCell.origin.y, width: width, height: height)
-        let bezierPath = UIBezierPath(CGPath: CGPathCreateWithRect(rect, nil))
+        let bezierPath = UIBezierPath(cgPath: CGPath(rect: rect, transform: nil))
         
         wallColor.setStroke()
         bezierPath.lineWidth = wallWidth / 2
         bezierPath.stroke()
         
-        super.drawRect(rect)
+        super.draw(rect)
     }
     
     // MARK: Convenience
     
-    func cellForRow(row: Int, column: Int) -> MazeCellView {
+    func cellForRow(_ row: Int, column: Int) -> MazeCellView {
         return cells[row][column]
     }
     

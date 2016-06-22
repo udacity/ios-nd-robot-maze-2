@@ -25,7 +25,7 @@ class MazeViewController: UIViewController {
         mazeController = MazeController(plistFile: "Maze1", mazeView: mazeView)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if mazeView.rows() == 0 || mazeView.columns() == 0 {
             print("Error: Maze contains no rows or columns!")
@@ -49,9 +49,9 @@ class MazeViewController: UIViewController {
             } else if object is SimpleRobot {
                 print("Completion Code: Ud@c1ty")
             }
-            UIView.animateWithDuration(1.0, animations: {
+            UIView.animate(withDuration: 1.0, animations: {
                 star.view.alpha = 0
-                star.view.frame = CGRectInset(star.view.frame, -50, -50)
+                star.view.frame = star.view.frame.insetBy(dx: -50, dy: -50)
                 }, completion: { (complete) -> Void in
                     star.view.layer.removeAllAnimations()
             })
@@ -76,7 +76,7 @@ class MazeViewController: UIViewController {
         let randomx = Int(arc4random() % 7)
         let randomy = Int(arc4random() % 5)
         
-        let complexRobot = ComplexRobotObject(location: MazeLocation(x: randomx, y: randomy), direction: MazeDirection.Up)
+        let complexRobot = ComplexRobotObject(location: MazeLocation(x: randomx, y: randomy), direction: MazeDirection.up)
         mazeController.addMazeObject(complexRobot)
         mazeController.controlCenter.moveComplexRobot(complexRobot)
         print("The robot has entered the maze.")
@@ -84,7 +84,7 @@ class MazeViewController: UIViewController {
     }
     
     func printTimestamp() {
-        let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .MediumStyle)
+        let timestamp = DateFormatter.localizedString(from: Date(), dateStyle: .mediumStyle, timeStyle: .mediumStyle)
         print(timestamp)
     }
 }

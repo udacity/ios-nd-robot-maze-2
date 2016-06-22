@@ -10,31 +10,31 @@ import Foundation
 
 // MARK: - MazeMoveOperation
 
-class MazeMoveOperation: NSOperation {
-
+class MazeMoveOperation: Operation {
+    
     // MARK: Properties
     
     private let mazeController: MazeController
-    private var isFinished: Bool
+    private var _isFinished: Bool
     
     let move: MazeMove
     let object: MazeObject
-
+    
     // MARK: Initializers
     
     init(object: MazeObject, move: MazeMove, mazeController: MazeController) {
         self.object = object
         self.move = move
         self.mazeController = mazeController
-        self.isFinished = false
+        self._isFinished = false
         super.init()
     }
-
+    
     // MARK: NSOperation overrides
     
-    override var finished: Bool {
+    override var isFinished: Bool {
         get {
-            return isFinished
+            return _isFinished
         }
     }
     
@@ -45,8 +45,8 @@ class MazeMoveOperation: NSOperation {
     // MARK: KVO Convenience
     
     func markAsFinished() {
-        willChangeValueForKey("isFinished")
-        isFinished = true
-        didChangeValueForKey("isFinished")
+        willChangeValue(forKey: "isFinished")
+        _isFinished = true
+        didChangeValue(forKey: "isFinished")
     }
 }

@@ -15,18 +15,18 @@ class QueueManager {
     // MARK: Properties
     
     static let sharedManager = QueueManager()
-    private var lastOperation: NSOperation? = nil
-    var operationQueue: NSOperationQueue
+    private var lastOperation: Operation? = nil
+    var operationQueue: OperationQueue
 
     // MARK: Initializers
     
     init() {
-        self.operationQueue = NSOperationQueue.mainQueue()
+        self.operationQueue = OperationQueue.main()
     }
     
     // MARK: Add Dependencies
     
-    func addDependentMove(move: MazeMoveOperation) {
+    func addDependentMove(_ move: MazeMoveOperation) {
         if let lastOperation = lastOperation { move.addDependency(lastOperation) }
         lastOperation = move
         operationQueue.addOperation(move)

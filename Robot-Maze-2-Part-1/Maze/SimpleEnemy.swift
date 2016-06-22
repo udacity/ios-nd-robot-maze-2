@@ -25,13 +25,13 @@ private class SimpleEnemy: MazeActor {
 
         var direction: MazeDirection!
         if self.fromLocation.y < self.toLocation.y {
-            direction = MazeDirection.Down
+            direction = MazeDirection.down
         } else if self.fromLocation.y > self.toLocation.y {
-            direction = MazeDirection.Up
+            direction = MazeDirection.up
         } else if self.fromLocation.x < self.toLocation.x {
-            direction = MazeDirection.Right
+            direction = MazeDirection.right
         } else if self.fromLocation.x > self.toLocation.x {
-            direction = MazeDirection.Left
+            direction = MazeDirection.left
         } else {
             assertionFailure("Direction must be on at least one same axis")
         }
@@ -43,8 +43,8 @@ private class SimpleEnemy: MazeActor {
     
     func move() {
         if (self.location == self.fromLocation || self.location == self.toLocation) && hasMoved {
-            self.rotate(RotateDirection.Right) {
-                self.rotate(RotateDirection.Right) {
+            self.rotate(RotateDirection.right) {
+                self.rotate(RotateDirection.right) {
                     self.move(self.direction, moves: 1) {
                         self.move()
                     }
@@ -59,8 +59,8 @@ private class SimpleEnemy: MazeActor {
         hasMoved = true
     }
     
-    override func enqueueMove(move: MazeMove, completionHandler: (() -> Void)? = nil) {
-        if move.rotateDirection == .None {
+    override func enqueueMove(_ move: MazeMove, completionHandler: (() -> Void)? = nil) {
+        if move.rotateDirection == .none {
             let newLocation = MazeLocation(x: self.location.x + move.coords.dx, y: self.location.y + move.coords.dy)
             mazeController?.moveObjectToLocation(self, newLocation: newLocation) {
                 self.mazeController?.didPerformMove(self, move: move)

@@ -17,13 +17,13 @@ struct MazeMove {
         get {
             switch(coords.dx, coords.dy) {
             case (0, -1):
-                return .Up
+                return .up
             case (0, 1):
-                return .Down
+                return .down
             case (-1, 0):
-                return .Left
+                return .left
             case (1, 0):
-                return .Right
+                return .right
             default:
                 assert(false, "Invalid MazeDirection, Invalid RobotMove")
             }
