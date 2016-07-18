@@ -4,7 +4,7 @@
 
 ![Platform iOS](https://img.shields.io/badge/nanodegree-iOS-blue.svg)
 
-This repository contains starter code for Robot Maze 2 project in Udacity's iOS Nanodegree.
+This repository contains starter code for the Robot Maze 2 project in Udacity's iOS Nanodegree.
 
 ## Overview
 
