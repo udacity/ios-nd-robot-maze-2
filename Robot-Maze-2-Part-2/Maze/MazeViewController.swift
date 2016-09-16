@@ -15,7 +15,7 @@ class MazeViewController: UIViewController {
     // MARK: Properties
     
     @IBOutlet weak var mazeView: MazeView!
-    private var mazeController: MazeController!
+    fileprivate var mazeController: MazeController!
     
     // MARK: Lifecycle
     
@@ -84,7 +84,7 @@ class MazeViewController: UIViewController {
     }
     
     func printTimestamp() {
-        let timestamp = DateFormatter.localizedString(from: Date(), dateStyle: .mediumStyle, timeStyle: .mediumStyle)
+        let timestamp = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .medium)
         print(timestamp)
     }
 }

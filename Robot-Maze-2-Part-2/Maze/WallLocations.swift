@@ -15,6 +15,11 @@ extension ControlCenter {
         let cell = mazeController.currentCell(robot)
         var isWall: Bool = false
         
+        print("cell above robot?: \(cell.top)")
+        print("cell below robot?: \(cell.bottom)")
+        print("cell to left of robot?: \(cell.left)")
+        print("cell to right of robot?: \(cell.right)")
+        
         // You may want to paste your Part 1 implementation of isFacingWall() here
         
         return false

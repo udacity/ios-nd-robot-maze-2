@@ -14,7 +14,7 @@ class MazeCellView : UIView {
     
     // MARK: Properties
     
-    var wallColor: UIColor = UIColor.orange()
+    var wallColor: UIColor = UIColor.orange
     var cellModel: MazeCellModel?
     var wallWidth: CGFloat = 1
 
@@ -36,23 +36,23 @@ class MazeCellView : UIView {
             let hw = wallWidth / CGFloat(2)
             
             if cellModel.top {
-                path.moveTo(nil, x: 0 - hw, y: 0)
-                path.addLineTo(nil, x: width + hw, y: 0)
+                path.move(to: CGPoint(x: 0 - hw, y: 0))
+                path.addLine(to: CGPoint(x: width + hw, y: 0))
             }
             
             if cellModel.right {
-                path.moveTo(nil, x: width, y: 0)
-                path.addLineTo(nil, x: width, y: height)
+                path.move(to: CGPoint(x: width, y: 0))
+                path.addLine(to: CGPoint(x: width, y: height))
             }
             
             if cellModel.bottom {
-                path.moveTo(nil, x: width + hw, y: height)
-                path.addLineTo(nil, x: 0 - hw, y: height)
+                path.move(to: CGPoint(x: width + hw, y: height))
+                path.addLine(to: CGPoint(x: 0 - hw, y: height))
             }
             
             if cellModel.left {
-                path.moveTo(nil, x: 0, y: height)
-                path.addLineTo(nil, x: 0, y: 0)
+                path.move(to: CGPoint(x: 0, y: height))
+                path.addLine(to: CGPoint(x: 0, y: 0))                
             }
             
             let bezierPath = UIBezierPath(cgPath: path)

@@ -15,13 +15,13 @@ class QueueManager {
     // MARK: Properties
     
     static let sharedManager = QueueManager()
-    private var lastOperation: Operation? = nil
+    fileprivate var lastOperation: Operation? = nil
     var operationQueue: OperationQueue
 
     // MARK: Initializers
     
     init() {
-        self.operationQueue = OperationQueue.main()
+        self.operationQueue = OperationQueue.main
     }
     
     // MARK: Add Dependencies

@@ -12,13 +12,13 @@ extension ControlCenter {
     
     func randomlyRotateRightOrLeft(_ robot: ComplexRobotObject) {
         let randomNumber = arc4random() % 2
-        
+        print("randomlyRotateRightOrLeft: \(randomNumber)")
         // You may want to paste your Part 1 implementation of randomlyRotateRightOrLeft(robot: ComplexRobotObject) here.
     }
     
     func continueStraightOrRotate(_ robot: ComplexRobotObject, wallInfo:(up: Bool, right: Bool, down: Bool, left: Bool, numberOfWalls: Int)) {
         let randomNumber = arc4random() % 2
-        
+        print("continueStraightOrRotate: \(randomNumber)")
         // You may want to paste your Part 1 implementation of continueStraightOrRotate(robot: ComplexRobotObject) here.
         
         // Step 3.2

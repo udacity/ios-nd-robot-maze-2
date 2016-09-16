@@ -28,7 +28,7 @@ class MazeView: UIView {
     var cellLayer: UIView!
     var cells = [[MazeCellView]]()
     
-    var wallColor = UIColor.orange()
+    var wallColor = UIColor.orange
     var wallWidth = CGFloat(8)
     
     // MARK: Initializers
@@ -49,12 +49,12 @@ class MazeView: UIView {
         self.setUpCellLayerAndBackground()
     }
     
-    private func setUpCellLayerAndBackground() {
+    fileprivate func setUpCellLayerAndBackground() {
         cellLayer = UIView(frame: self.frame)
-        cellLayer.backgroundColor = UIColor.clear()
+        cellLayer.backgroundColor = UIColor.clear
         cellLayer.isOpaque = false
         addSubview(cellLayer)
-        self.backgroundColor = UIColor.black()
+        self.backgroundColor = UIColor.black
     }
     
     // MARK: Create MazeCellViews
@@ -76,7 +76,7 @@ class MazeView: UIView {
                     cell.cellModel = MazeCellModel(top: true, right: true, bottom: true, left: true)
                 }
                 
-                cell.backgroundColor = UIColor.clear()
+                cell.backgroundColor = UIColor.clear
                 
                 row.append(cell)
                 

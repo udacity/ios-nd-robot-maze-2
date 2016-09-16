@@ -14,7 +14,7 @@ class SimpleRobotView: UIView {
     
     // MARK: Properties
     
-    var color: UIColor = UIColor.white()
+    var color: UIColor = UIColor.white
     var lineWidth: CGFloat = 5
     var border: CGFloat = 15
     

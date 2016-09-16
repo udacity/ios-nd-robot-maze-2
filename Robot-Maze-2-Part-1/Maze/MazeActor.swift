@@ -32,7 +32,7 @@ class MazeActor: MazeObject {
         self.view.isOpaque = false
         
         if self.direction != MazeDirection.up {
-            self.view.transform = self.view.transform.rotate(CGFloat(M_PI_2) * CGFloat(self.direction.rawValue))
+            self.view.transform = self.view.transform.rotated(by: CGFloat(M_PI_2) * CGFloat(self.direction.rawValue))
         }
     }
     
@@ -50,7 +50,7 @@ class MazeActor: MazeObject {
         }
         
         if self.direction != MazeDirection.up {
-            self.view.transform = self.view.transform.rotate(CGFloat(M_PI_2) * CGFloat(self.direction.rawValue))
+            self.view.transform = self.view.transform.rotated(by: CGFloat(M_PI_2) * CGFloat(self.direction.rawValue))
         }
     }
     

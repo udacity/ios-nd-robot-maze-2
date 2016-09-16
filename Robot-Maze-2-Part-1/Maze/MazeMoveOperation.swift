@@ -14,8 +14,8 @@ class MazeMoveOperation: Operation {
     
     // MARK: Properties
     
-    private let mazeController: MazeController
-    private var _isFinished: Bool
+    fileprivate let mazeController: MazeController
+    fileprivate var _isFinished: Bool
     
     let move: MazeMove
     let object: MazeObject
