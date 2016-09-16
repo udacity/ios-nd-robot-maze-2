@@ -71,7 +71,7 @@ class MazeView: UIView {
                 let cell = MazeCellView()
                 
                 if let delegate = delegate {
-                    delegate.mazeView(self, configureCell: cell, forRow: r, column: c)
+                    let _ = delegate.mazeView(self, configureCell: cell, forRow: r, column: c)
                 } else {
                     cell.cellModel = MazeCellModel(top: true, right: true, bottom: true, left: true)
                 }

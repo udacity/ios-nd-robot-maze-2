@@ -25,17 +25,17 @@ class SimpleRobotView: UIView {
  
         let robotRect = CGRectInset(self.bounds, border, border)
         let context = UIGraphicsGetCurrentContext()
-        CGContextSaveGState(context)
-        CGContextClearRect(context, rect)
-        CGContextSetLineWidth(context, lineWidth)
-        CGContextSetStrokeColorWithColor(context, color.CGColor)
-        CGContextStrokeEllipseInRect(context, robotRect)
+        CGContextSaveGState(context!)
+        CGContextClearRect(context!, rect)
+        CGContextSetLineWidth(context!, lineWidth)
+        CGContextSetStrokeColorWithColor(context!, color.CGColor)
+        CGContextStrokeEllipseInRect(context!, robotRect)
         
-        CGContextSetLineWidth(context, 3)
-        CGContextStrokeEllipseInRect(context, CGRectMake(22, 19, 2, 2))
-        CGContextStrokeEllipseInRect(context, CGRectMake(27, 19, 2, 2))
+        CGContextSetLineWidth(context!, 3)
+        CGContextStrokeEllipseInRect(context!, CGRectMake(22, 19, 2, 2))
+        CGContextStrokeEllipseInRect(context!, CGRectMake(27, 19, 2, 2))
         
-        CGContextRestoreGState(context)
+        CGContextRestoreGState(context!)
     }
     
 }

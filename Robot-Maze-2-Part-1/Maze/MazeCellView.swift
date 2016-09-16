@@ -62,14 +62,14 @@ class MazeCellView : UIView {
             
             // Rounded corners
             let context = UIGraphicsGetCurrentContext()
-            CGContextSaveGState(context)
+            CGContextSaveGState(context!)
             let nearCornerValue = -0.5 * wallWidth
             let farCornerValue = width + nearCornerValue
-            CGContextFillEllipseInRect(context, CGRect(x: nearCornerValue, y: nearCornerValue, width: wallWidth, height: wallWidth))
-            CGContextFillEllipseInRect(context, CGRect(x: farCornerValue, y: farCornerValue, width: wallWidth, height: wallWidth))
-            CGContextFillEllipseInRect(context, CGRect(x: farCornerValue, y: nearCornerValue, width: wallWidth, height: wallWidth))
-            CGContextFillEllipseInRect(context, CGRect(x: nearCornerValue, y: farCornerValue, width: wallWidth, height: wallWidth))
-            CGContextRestoreGState(context)
+            CGContextFillEllipseInRect(context!, CGRect(x: nearCornerValue, y: nearCornerValue, width: wallWidth, height: wallWidth))
+            CGContextFillEllipseInRect(context!, CGRect(x: farCornerValue, y: farCornerValue, width: wallWidth, height: wallWidth))
+            CGContextFillEllipseInRect(context!, CGRect(x: farCornerValue, y: nearCornerValue, width: wallWidth, height: wallWidth))
+            CGContextFillEllipseInRect(context!, CGRect(x: nearCornerValue, y: farCornerValue, width: wallWidth, height: wallWidth))
+            CGContextRestoreGState(context!)
         }
     }
 }
